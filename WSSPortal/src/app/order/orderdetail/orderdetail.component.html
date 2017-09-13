@@ -1,0 +1,48 @@
+<kendo-grid [data]="gridView"
+            [scrollable]="'auto'" [pageSize]="pageSize"
+            [skip]="skip"
+            [pageable]="{
+          buttonCount: buttonCount,
+          info: info,
+          type: type,
+          pageSizes: pageSizes,
+          previousNext: previousNext
+        }"
+            (pageChange)="pageChange($event)">                      
+
+    <kendo-grid-column media="(max-width: 450px)" title="Order Details">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <!-- template for mobile -->
+            <h4>
+                {{ dataItem.ORDER_NO }}
+            </h4>
+            <dl>
+                <dt>Order#</dt>
+                <dd>{{ dataItem.ORDER_NO }}</dd>
+                <dt>Part Description</dt>
+                <dd>{{ dataItem.PART_DESC }}</dd>
+                <dt>Quantity</dt>
+                <dd>{{ dataItem.QTY }}</dd>
+                <dt>Price</dt>
+                <dd>{{ dataItem.PRICE }}</dd>
+                <dt>Status</dt>
+                <dd>{{ dataItem.ORDER_STATUS }}</dd>
+                <dt>Vessel Name</dt>
+                <dd>{{ dataItem.VESSEL_NAME }}</dd>
+            </dl>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="ORDER_NO" title="Order#" media="(min-width: 450px)">                     
+    </kendo-grid-column>
+    <kendo-grid-column field="PART_DESC" title="Part Description" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="QTY" title="Quantity" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="PRICE" title="Price" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="ORDER_STATUS" title="Status" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="VESSEL_NAME" title="Vessel Name" media="(min-width: 450px)">
+    </kendo-grid-column>
+</kendo-grid>
+<div [ngBusy]="{busy: busy, message: 'Loading...', backdrop: true, delay: 200, minDuration: 600}"></div>

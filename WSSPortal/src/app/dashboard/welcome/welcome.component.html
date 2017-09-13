@@ -1,0 +1,202 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-left">
+            <p>&nbsp;</p>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="row bg-primary">
+                    <div class="col-xs-6">
+                        <img src="../../assets/images/iconL-agency.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <h4># Customer Accounts</h4>
+                        <h3>{{CustomerCount}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="row  bg-success">
+                    <div class="col-xs-6">
+                        <img src="../../assets/images/iconL-ecommerce.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <h4># Active Orders</h4>
+                        <h3>{{OrderCount}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="row  bg-info">
+                    <div class="col-xs-5">
+                        <!--<img src="../images/iconL-customer.png" class="img-responsive">-->
+                        <img src="../../assets/images/cylinders_one.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-7 text-right">
+                        <h4># Cylinders Onboard</h4>
+                        <h3>{{CylinderCount}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="col-md-3">
+            <div class="col-md-12">
+                <div class="row  bg-danger">
+                    <div class="col-xs-6">
+                        <img src="../images/delivery_pending.png" class="img-responsive">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <h4>#Pending Orders</h4>
+                        <h3>000</h3>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-left">
+            <p>&nbsp;</p>
+        </div>
+    </div>
+    <div class="row">
+        <!--<div class="col-md-6">
+            <div class="col-md-12">
+                <kendo-chart>
+                    <kendo-chart-title text="Order % by Status"
+                                       color="#003399" [padding]="20"
+                                       background="transparent" font="15pt arial">
+                    </kendo-chart-title>
+                    <kendo-chart-series-defaults type="pie">
+                        <kendo-chart-series-defaults-labels [visible]="false">
+
+                        </kendo-chart-series-defaults-labels>
+                    </kendo-chart-series-defaults>
+                    <kendo-chart-legend position="bottom"></kendo-chart-legend>
+                    <kendo-chart-tooltip [shared]="true" format="{0} %">
+
+                    </kendo-chart-tooltip>
+                    <kendo-chart-series>
+                        <kendo-chart-series-item type="pie"
+                                                 [data]="chartData"
+                                                 field="Percentage"
+                                                 categoryField="OrderStatus">
+                            {{Result}}
+
+                        </kendo-chart-series-item>
+                    </kendo-chart-series>
+                </kendo-chart>-->
+                <!--<img src="images/graph3.png" />-->
+            <!--</div>
+        </div>
+        <div class="col-md-6">-->
+        <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <kendo-chart>
+                    <kendo-chart-title text="Orders by Month"
+                                       color="#003399" [padding]="20"
+                                       background="transparent" font="15pt arial">
+                    </kendo-chart-title>
+                    <kendo-chart-series-defaults type="bar">
+                        <kendo-chart-series-defaults-labels [visible]="false">
+
+                        </kendo-chart-series-defaults-labels>
+                    </kendo-chart-series-defaults>
+                    <kendo-chart-legend position="bottom"></kendo-chart-legend>
+                    <kendo-chart-tooltip [shared]="true">
+                        orders
+                    </kendo-chart-tooltip>
+                    <kendo-chart-category-axis>
+                        <kendo-chart-category-axis-item [line]="{visible:false}" labels="false">
+                        </kendo-chart-category-axis-item>
+                    </kendo-chart-category-axis>
+                    <kendo-chart-series>                        
+                        <kendo-chart-series-item type="column" [data]="chartData"
+                                                 field="OrderCount" categoryField="Month">
+                        </kendo-chart-series-item>
+                    </kendo-chart-series>
+                </kendo-chart>
+            </div>
+        <div class="col-md-2"></div>
+        </div>
+    </div>
+    
+<!--</div>-->
+<!--<style type="text/css">
+    /*html, body { overflow: hidden; }*/
+    body {
+        font-family: "RobotoRegular",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    my-app {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        min-height: 80px;
+        box-sizing: border-box;
+        padding: 0px 30px 0px 30px;
+    }
+
+        my-app > .k-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    .example-wrapper {
+        min-height: 280px;
+        align-content: flex-start;
+    }
+
+        .example-wrapper p, .example-col p {
+            margin: 0 0 10px;
+        }
+
+            .example-wrapper p:first-child, .example-col p:first-child {
+                margin-top: 0;
+            }
+
+    .example-col {
+        display: inline-block;
+        vertical-align: top;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .example-config {
+        margin: 0 0 20px;
+        padding: 20px;
+        background-color: rgba(0,0,0,.03);
+        border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .event-log {
+        margin: 0;
+        padding: 0;
+        max-height: 100px;
+        overflow-y: auto;
+        list-style-type: none;
+        border: 1px solid rgba(0,0,0,.08);
+        background-color: #fff;
+    }
+
+        .event-log li {
+            margin: 0;
+            padding: .3em;
+            line-height: 1.2em;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+        }
+
+            .event-log li:last-child {
+                margin-bottom: -1px;
+            }
+</style>-->

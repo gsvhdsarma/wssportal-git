@@ -1,0 +1,96 @@
+<div style="align-content:flex-end">
+    <div class="row ">
+        <div class="col-md-6"><h3>Users</h3></div>
+        <div class="col-md-6">
+            <a (click)="onClickAddUser()" title="Add User">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<alert></alert>
+<kendo-grid [data]="gridView"
+            [scrollable]="'auto'"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [pageable]="{
+          buttonCount: buttonCount,
+          info: info,
+          type: type,
+          pageSizes: pageSizes,
+          previousNext: previousNext
+        }"
+            (pageChange)="pageChange($event)"
+            [sortable]="{ mode: 'single' }"
+            [sort]="sort"
+            (sortChange)="sortChange($event)"
+            [filter]="filter"
+            [filterable]="false"
+            (filterChange)="filterChange($event)">
+    <kendo-grid-column media="(max-width: 450px)" title="Users">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <!-- template for mobile -->
+            <dl>
+                <!--<dt>User ID</dt>
+                <dd>{{ dataItem.USER_ID }}</dd>-->
+                <dt>User Name</dt>
+                <dd>{{ dataItem.FULL_NAME }}</dd>
+                <dt>Phone Number</dt>
+                <dd>{{ dataItem.PHONE }}</dd>
+                <dt>Email ID</dt>
+                <dd>{{ dataItem.EMAIL }}</dd>
+            </dl>
+        </ng-template>
+    </kendo-grid-column>
+    <!--<kendo-grid-column field="USER_ID" title="User ID" media="(min-width: 450px)">
+    </kendo-grid-column>-->
+    <kendo-grid-column field="FULL_NAME" title="User Name" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="PHONE" title="Phone Number" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="EMAIL" title="Email ID" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column title="">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <!--<a (click)="onClickEdit(dataItem)" title="Edit">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>-->&nbsp;
+            <a *ngIf="dataItem.DELETED==0" (click)="onClickDisable(dataItem)" title="Disable user">
+                <!--<span class="glyphicon glyphicon-trash"></span>-->
+                <img src="../../../assets/images/disableUser.png" style="vertical-align:top" />
+            </a>
+
+            <a *ngIf="dataItem.DELETED==1" (click)="onClickEnable(dataItem)" title="Enable user">
+                <!--<span class="glyphicon glyphicon-trash"></span>-->
+                <img src="../../../assets/images/enableUser.png" style="vertical-align:top" />
+            </a>
+
+            <a (click)="onClickResetPassword(dataItem)" title="Reset Password">
+                <!--<span class="glyphicon glyphicon-lock"></span>-->
+                <img src="../../../assets/images/resetPassword25.png" style="vertical-align:top" />
+            </a>            
+        </ng-template>
+    </kendo-grid-column>
+</kendo-grid>
+<div [ngBusy]="{busy: busy, message: 'Loading Users...', backdrop: true, delay: 200, minDuration: 600}"></div>
+
+<style>
+    span.glyphicon-edit {
+        font-size: 1.5em;
+    }
+
+    span.glyphicon-trash {
+        font-size: 1.5em;
+    }
+
+    span.glyphicon-plus-sign {
+        font-size: 2.25em;
+        top : 23px;
+        float:right;
+        right:15px;
+    }
+
+    span.glyphicon-lock {
+        font-size: 1.5em;
+    }
+</style>

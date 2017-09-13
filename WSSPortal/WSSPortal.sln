@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WSSPortal", "..\WSSPortal", "{1A0A551B-AEB8-4929-83B3-9F316439D280}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_32961"
+		Debug.AspNetCompiler.PhysicalPath = "E:\Divakar\AngularCliv4Experiments\WSSPortal-cli\WSSPortal\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_32961\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_32961"
+		Release.AspNetCompiler.PhysicalPath = "E:\Divakar\AngularCliv4Experiments\WSSPortal-cli\WSSPortal\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_32961\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "32961"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A0A551B-AEB8-4929-83B3-9F316439D280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A0A551B-AEB8-4929-83B3-9F316439D280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

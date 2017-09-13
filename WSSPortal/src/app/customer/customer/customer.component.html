@@ -1,0 +1,96 @@
+<h3>Customer Details</h3>
+<kendo-grid [data]="gridView"
+            [scrollable]="'auto'"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [pageable]="{
+          buttonCount: buttonCount,
+          info: info,
+          type: type,
+          pageSizes: pageSizes,
+          previousNext: previousNext
+        }"
+            (pageChange)="pageChange($event)"
+            [sortable]="{ mode: 'single' }"
+            [sort]="sort"
+            (sortChange)="sortChange($event)"
+            [filter]="filter"
+            [filterable]="false"
+            (filterChange)="filterChange($event)">
+    <kendo-grid-column media="(max-width: 450px)" title="Customers">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <!-- template for mobile -->            
+            <dl>
+                <dt>Customer ID</dt>
+                <dd>{{ dataItem.CUSTOMER_ID }}</dd>
+                <dt>Name</dt>
+                <dd>{{ dataItem.CUSTOMER_NAME }}</dd>
+                <!--<dt>Phone #</dt>
+                <dd>{{ dataItem.PHONE_NUMBER }}</dd>-->
+                <!--<dt>Created Date</dt>
+                <dd>{{ dataItem.CREATED_DATE }}</dd>
+                <dt>Modified Date</dt>
+                <dd>{{ dataItem.MODIFIED_DATE }}</dd>-->
+                <dt>EMail</dt>
+                <dd>{{ dataItem.E_MAIL=="NULL" ? "" : dataItem.E_MAIL }}</dd>
+                <dt>Fax Number</dt>
+                <dd>{{ dataItem.FAX=="0" ? "" : dataItem.FAX }}</dd>
+                <dt>Address</dt>
+                <dd>{{ dataItem.ADDRESS=="NULL" ? "" : dataItem.ADDRESS }}</dd>
+            </dl>
+        </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="CUSTOMER_ID" title="Customer Id" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="CUSTOMER_NAME" title="Name" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <!--<kendo-grid-column field="CREATED_DATE" title="Created Date" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="MODIFIED_DATE" title="Modified Date" media="(min-width: 450px)">
+    </kendo-grid-column>-->
+    <!--<kendo-grid-column field="PHONE_NUMBER" title="Phone #" media="(min-width: 450px)">
+    </kendo-grid-column>-->
+    <kendo-grid-column field="E_MAIL" title="Email" media="(min-width: 450px)">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            {{dataItem.E_MAIL=="NULL" ? "" : dataItem.E_MAIL}}
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="FAX" title="Fax Number" media="(min-width: 450px)">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            {{dataItem.FAX=="0" ? "" : dataItem.FAX}}
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="ADDRESS" title="Address" media="(min-width: 450px)">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            {{dataItem.ADDRESS=="NULL" ? "" : dataItem.ADDRESS}}
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column title="Details">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <a routerLink="orders" (click)="onClickOrders(dataItem)" title="Orders">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </a>
+            <a routerLink="CylinderDetails" (click)="onClickCylinders(dataItem)" title="Cylinder Rentals">
+                <!--<span class="glyphicon glyphicon-oil"></span>-->
+                <img src="../../../assets/images/oxigen_tank.png" style="vertical-align:top" />
+            </a>
+            <span class="glyphicons glyphicons-oxygen-bottle"></span>
+            <!--<span class="glyphicons glyphicons-oxygen-bottle"></span>-->
+            <!--<button type="button" (click)="onClickOrders(dataItem)">Orders</button>-->
+            <!--<span class="glyphicon glyphicons-oxygen-bottle"></span>-->
+            <!--<button type="button" (click)="onClickCylinders(dataItem)">Cylinders</button>-->
+        </ng-template>
+    </kendo-grid-column>
+</kendo-grid>
+<div [ngBusy]="{busy: busy, message: 'Loading Customers...', backdrop: true, delay: 200, minDuration: 600}"></div>
+<style>
+    span.glyphicon-shopping-cart {
+        font-size: 1.5em;
+        line-height:1.5;
+    }
+
+    span.glyphicon-oil {
+        font-size: 1.5em;
+    }  
+</style>

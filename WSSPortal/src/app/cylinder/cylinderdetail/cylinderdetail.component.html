@@ -1,0 +1,35 @@
+<kendo-grid [data]="gridView1"
+            [scrollable]="'auto'">
+    <kendo-grid-column field="LastCountedLoc" title="Location Last Counted" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="LastFilling" title="Last Filling" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="OwningSite" title="Owing Site" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="LastTransDate" title="Last Transaction Date" media="(min-width: 450px)">
+    </kendo-grid-column>
+    <kendo-grid-column field="LastCustOrder" title="Last Customer Order#" media="(min-width: 450px)">
+    </kendo-grid-column>
+
+    <kendo-grid-column media="(max-width: 450px)" title="Details">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <!-- template for mobile -->
+            <h4>
+                {{ dataItem.VESSEL_NAME }}
+            </h4>
+            <dl>
+                <dt>Location Last Counted</dt>
+                <dd>{{ dataItem.LastCountedLoc }}</dd>
+                <dt>Last Filling</dt>
+                <dd>{{ dataItem.LastFilling }}</dd>
+                <dt>Owing Site</dt>
+                <dd>{{ dataItem.OwningSite }}</dd>
+                <dt>Last Transaction Date</dt>
+                <dd>{{ dataItem.LastTransDate }}</dd>
+                <dt>Last Customer Order#</dt>
+                <dd>{{ dataItem.LastCustOrder }}</dd>
+            </dl>
+        </ng-template>
+    </kendo-grid-column>
+    
+</kendo-grid>

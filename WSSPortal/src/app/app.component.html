@@ -1,0 +1,29 @@
+<div id="pagewrap">
+    <header>
+        <div class="home_nav">
+            <img src="../assets/images/wss_logo.png">
+            <!--<h4 style="float:right;">
+                {{isLoginPage}}
+            </h4>-->
+        </div>
+        
+    </header>
+
+    <div>
+        <wss-navbar></wss-navbar>
+    </div>
+    <div style="padding:0px 24px; margin-bottom:20px">
+        <router-outlet></router-outlet>
+    </div>
+
+    <wssfooter></wssfooter>
+
+</div>
+
+<style>
+    header {
+        border: none;
+        background-color: #f2f6f7;
+        width: 100%;
+    }
+</style>

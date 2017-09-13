@@ -1,0 +1,57 @@
+<div id="pagewrap">   
+    <div id="pagewrap">
+        <div id="contentMainLogin">
+            <!--<router-outlet></router-outlet>-->
+           
+            <section id="login">
+                <div id="loginBox">
+                    <div class="loginBox">
+                        <alert></alert>
+                        <div class="form-group">
+                            <h4><span style="color: #003399; font-size: 22px; text-align: center;">Login with your User ID</span></h4>
+                            <!--<asp:TextBox ID="txtUserName" class="form-control" runat="server" placeholder="User Id"></asp:TextBox>-->
+                            <input type="text" ID="txtUserName" class="form-control" placeholder="User Id" [(ngModel)]="model.username" name="username"/>
+                        </div>
+                        <div class="form-group">
+                            <!--<asp:TextBox ID="txtPassword" type="password" class="form-control" runat="server" placeholder="Password"></asp:TextBox>-->
+                            <input type="password" ID="txtPassword" class="form-control" placeholder="Password" [(ngModel)]="model.password" name="password" />
+                        </div>
+                        <!--<asp:Button ID="btnLogin" class="btn btn-primary loginBtn" runat="server" Text="Login" OnClick="btnLogin_Click" />-->
+                        <button class="btn btn-primary loginBtn" (click)="onClickMe($event)">
+                            Login
+                        </button>
+                        <div class="form-group">
+                            <!--<asp:Label ID="lblMessage" runat="server" ForeColor="Red" Text=""></asp:Label>-->
+                            <span id="lblMessage" ForeColor="Red" Text=""></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div [ngBusy]="{busy: busy, message: 'Please wait...', backdrop: true, delay: 200, minDuration: 600}"></div>
+
+<style type="text/css">
+    .bottomFooter {
+        text-align: center;
+        background-color: #1a3d81;
+        color: #ffffff;
+        padding: 12px;
+        padding-right: 2%;
+        font-size: 11.5px;
+        letter-spacing: 1px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+    }
+
+        .bottomFooter a {
+            text-align: center;
+            background-color: #1a3d81;
+            color: #ffffff;
+            width: 100%;
+            bottom: 0;
+        }
+</style>

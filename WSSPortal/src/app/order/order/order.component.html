@@ -1,0 +1,152 @@
+<h3>Orders</h3>
+<div class="SerachTab">
+    <span style="margin:2px 12px;">
+        <kendo-combobox [data]="customerList" [(ngModel)]="customerByID" [valueField]="'ID'" [textField]="'CUSTOMER_NAME'" [value]="selectedCustomer" (valueChange)="handleCustomerChange($event)" [placeholder]="'Select Customer'">
+        </kendo-combobox>
+    </span>
+    <span style="margin:2px 12px;">
+        <input type="text" [(ngModel)]="orderNO" placeholder="Enter Order Number" class="k-WssInput" />
+        <!--<kendo-maskedtextbox [(ngModel)]="orderNO" placeholder="Order Number"></kendo-maskedtextbox>-->
+        <!--<kendo-maskedtextbox  [(ngModel)]="orderNO" placeholder="Order Number" [mask]="mask" ></kendo-maskedtextbox>-->
+      </span>
+          <span style="margin:2px 12px;">
+            <kendo-combobox [data]="vesselsList" [valueField]="'VESSEL_ID'" [textField]="'VESSEL_NAME'" [value]="selectedVessel" (valueChange)="handleVesselChange($event)" [placeholder]="'Select Vessel'">
+            </kendo-combobox>
+        </span>
+        <span style="margin:2px 12px;">
+            <kendo-combobox [data]="Months" [valueField]="'MonthNo'" [textField]="'Month'" [value]="selectedMonth" (valueChange)="handleMonthChange($event)" [placeholder]="'Select Month'">
+            </kendo-combobox>
+        </span>
+        <span style="margin:2px 12px;">
+            <kendo-combobox [data]="Years" [valueField]="'YearNo'" [textField]="'Year'" [value]="selectedYear" (valueChange)="handleYearChange($event)" [placeholder]="'Select Year'">
+            </kendo-combobox>
+        </span>
+        <span style="margin:2px 12px;">
+            <label><input style="margin-left:8px; padding:6px ;" type="checkbox" (change)="onChange($event)" /><span style="font-size:12px; margin-left:4px;   font-weight:normal;">Historical</span></label>
+            <!--<button (click)="onClickMe($event)">Search</button>-->
+        </span>
+        <span style="margin:2px 12px;">
+            <button style="border:none; font-size:13px; background-color:#1a3d81;  margin-left:14px;  color:#ffffff; padding:4px 26px;" (click)="onClickMe($event)">
+                <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+        </span>
+</div>
+    <kendo-grid [data]="gridView"
+                [scrollable]="'auto'"
+                [pageSize]="pageSize"
+                [skip]="skip"
+                [pageable]="{
+          buttonCount: buttonCount,
+          info: info,
+          type: type,
+          pageSizes: pageSizes,
+          previousNext: previousNext
+        }"
+                (pageChange)="pageChange($event)"
+                [sortable]="{ mode: 'single' }"
+                [sort]="sort"
+                (sortChange)="sortChange($event)"
+                [filter]="filter"
+                [filterable]="false"
+                (filterChange)="filterChange($event)"
+                >                
+        <kendo-grid-column media="(max-width: 450px)" title="Orders">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <!-- template for mobile -->               
+                <dl>
+                    <dt>Order#</dt>
+                    <dd>{{ dataItem.ORDER_NO }}</dd>
+                    <dt>Customer Name</dt>
+                    <dd>{{ dataItem.CUSTOMER_NAME }}</dd>
+                    <dt>Vessel Name</dt>
+                    <dd>{{ dataItem.VESSEL_NAME }}</dd>
+                    <dt>Port Name</dt>
+                    <dd>{{ dataItem.PORT_NAME }}</dd>
+                    <dt>Customer PO#</dt>
+                    <dd>{{ dataItem.CUSTOMER_PO_NO }}</dd>
+                    <dt>Order Date</dt>
+                    <dd>{{ dataItem.ORDER_DATE }}</dd>
+                    <dt>Vessel ETA</dt>
+                    <dd>{{ dataItem.VESSEL_ETA }}</dd>
+                    <dt>Delivery Date</dt>
+                    <dd>{{ dataItem.DELIVERY_Date }}</dd>
+                    <dt>Status</dt>
+                    <dd>{{ dataItem.ORDER_Status }}</dd>
+                </dl>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="ORDER_NO" title="Order #" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="CUSTOMER_NAME" title="Customer Name" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="VESSEL_NAME" title="Vessel Name" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="PORT_NAME" title="Port Name" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="CUSTOMER_PO_NO" title="Customer PO #" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="ORDER_DATE" title="Order Date" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="VESSEL_ETA" title="Vessel ETA" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="DELIVERY_Date" title="Delivery Date" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <kendo-grid-column field="ORDER_Status" title="Status" media="(min-width: 450px)">
+        </kendo-grid-column>
+        <div *kendoGridDetailTemplate="let dataItem">
+            <orderDetail [order]="dataItem"></orderDetail>
+        </div>
+    </kendo-grid>
+    <div [ngBusy]="{busy: busy, message: 'Loading Orders...', backdrop: true, delay: 200, minDuration: 600}"></div>
+    <style>       
+
+.k-WssInput{
+    height: 28px;
+    display: inline;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, .1);
+    border-radius: 3px 0 0 3px;
+    padding: 4px 8px;
+    font-size: 12px;
+    width:149px;
+    }
+.SerachTab {
+        border: 1px solid #e2e2e4;
+        padding: 12px 18px;
+        background-color: #f1f1f3;
+        margin-bottom: 10px;
+    }
+.SerachTab ul {
+     padding:2px 25px;
+     height:22px;
+     }
+.SerachTab ul li{
+     list-style:none;
+     display:inline;
+     float:left;
+     margin:2px 8px;     
+     }
+
+.btnSearch{
+    border:1px solid #003399;
+    padding:6px 66px;
+    color:#003399;
+    background-color:#ffffff;
+    margin-left:20px;
+   }
+.k-WssInput {
+    /* height: 26px; */
+    display: inline;
+    /* border-width: 1px; */
+    border-color: rgba(0, 0, 0, .1);
+    border-radius: 3px 0 0 3px;
+    padding: 4px 8px;
+    font-size: 12px;
+    border: 1px solid #1a3d81;
+    border-radius: 0px;
+}
+
+       .k-icon {
+            color:#039;
+        }
+    </style>
