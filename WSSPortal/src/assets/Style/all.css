@@ -8,7 +8,7 @@
 }
 
 .k-content, .k-editor, .k-scheduler-agendaview tr.k-state-hover .k-scheduler-datecolumn, .k-spreadsheet-filter-menu .k-spreadsheet-value-treeview-wrapper, .k-widget, .k-window {
-    color: #656565;
+    color: #003f59;
     background-color: #fff;
     border-color: rgba(0,0,0,.08);
 }
